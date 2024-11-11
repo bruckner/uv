@@ -2665,6 +2665,7 @@ impl PublishSettings {
         let PublishOptions {
             publish_url,
             trusted_publishing,
+            check_url,
         } = publish;
         let ResolverInstallerOptions {
             keyring_provider, ..
@@ -2692,7 +2693,7 @@ impl PublishSettings {
                 .keyring_provider
                 .combine(keyring_provider)
                 .unwrap_or_default(),
-            check_url: args.check_url,
+            check_url: args.check_url.combine(check_url),
         }
     }
 }
